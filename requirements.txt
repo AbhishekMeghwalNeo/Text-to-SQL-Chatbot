@@ -1,0 +1,6 @@
+pandas
+notebook
+openai
+python-dotenv
+streamlit
+
