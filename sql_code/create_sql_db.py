@@ -1,10 +1,14 @@
 import sqlite3
 import pandas as pd
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # -------- CONFIG --------
 CSV_FOLDER = Path("data")          # folder containing CSV files
-DB_NAME = "sql_database/my_database.db"         # output SQLite database
+DB_NAME = os.getenv("database")         # output SQLite database
 # ------------------------
 
 # Connect to SQLite database
