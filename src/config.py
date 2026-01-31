@@ -19,6 +19,7 @@ class Config():
         
         self.api_key = os.getenv("OPENAI_API_KEY")
         self.raw_data_path = self.PROJECT_ROOT / "data/raw"
+        self.database_path = self.PROJECT_ROOT / "data/database/my_database.db"
 
 
 if __name__ == "__main__":
