@@ -3,3 +3,8 @@ env
 
 # Environment Variable
 .env
+
+# Cache Files
+__pycache__/
+*.pyc
+

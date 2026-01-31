@@ -1,0 +1,15 @@
+This is a project implementing NL 2 SQL chatbot
+
+User question
+   ↓
+Embed question
+   ↓
+Retrieve relevant schema chunks
+   ↓
+Inject into prompt
+   ↓
+LLM generates SQL
+   ↓
+Execute SQL
+
+

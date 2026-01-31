@@ -26,6 +26,7 @@ for csv_file in cfg.raw_data_path.glob("*.csv"):
 
 if __name__ == "__main__":
     # print(cfg.raw_data_path)
+    ...
 
 
 
