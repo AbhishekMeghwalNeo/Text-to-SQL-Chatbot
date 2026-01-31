@@ -1,0 +1,11 @@
+pandas
+notebook
+openai 
+python-dotenv
+streamlit
+
+langchain
+langchain-community
+
+faiss-cpu
+

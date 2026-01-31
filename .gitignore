@@ -1,0 +1,5 @@
+# Environment Folder
+env
+
+# Environment Variable
+.env
