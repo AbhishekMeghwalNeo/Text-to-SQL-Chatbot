@@ -55,15 +55,16 @@ def embed_text(texts: list[str]) -> list[list[float]]:
     :rtype: list[list[float]]
     """
     client = AzureOpenAI(
-        api_key= cfg.api_key,
-        api_version= "2025-01-01-preview",
+        api_key= cfg.embed_api_key,
+        api_version= "2023-05-15",
         azure_endpoint= "https://amiparmar-test-resource.cognitiveservices.azure.com/"
     )
-    
+
     response = client.embeddings.create(
-        model="text-embedding-3-small",  # <-- deployment name, NOT model name
+        model="hackathon-text-embedding-3-large", 
         input=texts
     )
+
     return [item.embedding for item in response.data]
 
 if __name__ == "__main__":
@@ -71,45 +72,42 @@ if __name__ == "__main__":
     with open(cfg.schema_path, "r") as file:
         table_schemas_json = json.load(file)
 
-    print(type(table_schemas_json))
-    print(table_schemas_json)
+    # print(type(table_schemas_json))
+    # print(table_schemas_json)
 
-    sample_table_text = table_schema_to_text(table_schemas_json[0])
+    # sample_table_text = table_schema_to_text(table_schemas_json[0])
 
-    print(sample_table_text)
+    # print(sample_table_text)
 
-    sample_embedded_text = embed_text(sample_table_text)
+    # sample_embedded_text = embed_text(sample_table_text)
 
-    print(f"Embedding Data type : {type(sample_embedded_text)}")
-    print(f"Number of Chunks: {len(sample_embedded_text)}")
+    # print(f"Embedding Data type : {type(sample_embedded_text)}")
+    # print(f"Number of Chunks: {len(sample_embedded_text)}")
 
-    print(f"Embedding Dimension: {len(sample_embedded_text[0])}")
+    # print(f"Embedding Dimension: {len(sample_embedded_text[0])}")
 
     print("--------------------------------------------------------------------------")
  
-    # all_metadata = [table_schema_to_text(table_schema) for table_schema in table_schemas_json]
+    all_metadata = [table_schema_to_text(table_schema) for table_schema in table_schemas_json]
 
-    # print(type(all_metadata))
-    # print(len(all_metadata))
-    # print(all_metadata)
+    print(type(all_metadata))
+    print(len(all_metadata))
+    print(all_metadata)
 
-    # embeddings = embed_text(texts= all_metadata)
+    embeddings = embed_text(texts= all_metadata)
 
-    # print(len(embeddings))
-    # print(len(embeddings[0]))
+    print(len(embeddings))
+    print(len(embeddings[0]))
 
-    # print("Embeddings created successfully")
+    print("Embeddings created successfully")
 
-    # store = VectorStore(dim= len(embeddings[0]))
+    store = VectorStore(dim= len(embeddings[0]))
 
-    # store.add(embeddings, all_metadata)
+    store.add(embeddings, all_metadata)
 
-    # store.save(path= cfg.vectore_store_path)
+    store.save(path= cfg.vectore_store_path)
 
-    # print("Embeddings and meta data is stored in vector store.")
-
-
-
+    print("Embeddings and meta data is stored in vector store.")
 
 
 
