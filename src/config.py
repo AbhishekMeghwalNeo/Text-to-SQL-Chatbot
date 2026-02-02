@@ -19,7 +19,7 @@ class Config():
 
     def __init__(self):
         
-        self.api_key = os.getenv("OPENAI_API_KEY")
+        self.api_key = os.getenv("AZURE_OPENAI_KEY")
         self.raw_data_path = self.PROJECT_ROOT / "data/raw"
         self.database_path = self.PROJECT_ROOT / "data/database/my_database.db"
         self.schema_path = self.PROJECT_ROOT / "data/schema/base_schema.json"
